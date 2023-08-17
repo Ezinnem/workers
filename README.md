@@ -5,7 +5,7 @@ You can clone the repository into a working folder in your local machine and the
 
 1. cd /folder
 2. git clone https://github.com/Ezinnem/workers.git
-3. cd bookstore 
+3. cd workers 
 4. go mod init <yourmodulename.com>
 5. go mod tidy
 Remember to change the mysql details in pkg/config/app.go file 
