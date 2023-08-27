@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
@@ -14,5 +13,4 @@ func main() {
 	routes.MembersRoutes(r)
 	http.Handle("/", r)
 	log.Fatal(http.ListenAndServe(":7500", r))
-	fmt.Println("Server is connected and running at port 7500")
 }
