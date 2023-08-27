@@ -13,7 +13,16 @@ import (
 
 var NewMember models.Member
 
-func GetMember(w http.ResponseWriter, r *http.Request) {
+func CreateMember(w http.ResponseWriter, r *http.Request) {
+	CreateMember := &models.Member{}
+	utils.ParseBody(r, CreateMember)
+	m := CreateMember.CreateMember()
+	res, _ := json.Marshal(m)
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
+}
+
+func GetAllMembers(w http.ResponseWriter, r *http.Request) {
 	newMembers := models.GetAllMembers()
 	res, _ := json.Marshal(newMembers)
 	w.Header().Set("Content-Type", "pkglication/json")
@@ -35,14 +44,6 @@ func GetMemberById(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
-func CreateMember(w http.ResponseWriter, r *http.Request) {
-	CreateMember := &models.Member{}
-	utils.ParseBody(r, CreateMember)
-	m := CreateMember.CreateMember()
-	res, _ := json.Marshal(m)
-	w.WriteHeader(http.StatusOK)
-	w.Write(res)
-}
 
 func DeleteMember(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
